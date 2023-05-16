@@ -2,6 +2,7 @@
 
 
 import { Product } from "src/modules/product/database/product.entity";
+import { User } from 'src/modules/users/database/users.entity';
 
 import { MysqlConnectionOptions } from "typeorm/driver/mysql/MysqlConnectionOptions";
 
@@ -18,7 +19,7 @@ const config: MysqlConnectionOptions = {
   password: process.env.DB_PASSWORD || "",
   type: "mysql",
   database: process.env.DB_DATABASE || "",
-  entities: [Product],
+  entities: [Product, User],
   // entities: ['dist/src/**/database/entities/*.entity{ .ts,.js}'],
   synchronize: process.env.DB_SYNCHRONIZE === "true",
   namingStrategy: new SnakeNamingStrategy(),
