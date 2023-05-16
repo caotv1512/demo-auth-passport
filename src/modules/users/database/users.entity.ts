@@ -8,11 +8,14 @@ export class User {
   id: number;
 
   @Column()
-  userName: string;
+  username: string;
+
+  @Column('')
+  email: string;
 
   @Column('')
   password: string;
 
   @Column()
-  role: string;
+  roleId: string;
 }
