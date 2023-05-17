@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Role } from 'src/modules/roles/database/role.entity';
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 export const TableName = 'users';
 
@@ -17,5 +18,5 @@ export class User {
   password: string;
 
   @Column()
-  roleId: string;
+  roleId: number;
 }

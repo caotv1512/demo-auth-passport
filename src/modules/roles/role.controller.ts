@@ -1,23 +1,23 @@
 import { Body, Controller, Delete, Get, HttpStatus, Param, Patch, Post } from '@nestjs/common';
-import { UsersService } from './users.service';
-import { UserDto } from './dto/user.dto';
+import { RoleService } from './role.service';
+import { RoleDto } from './dto/role.dto';
 
 @Controller('users')
-export class UsersController {
-    constructor(private readonly userService: UsersService) { }
+export class RoleController {
+    constructor(private readonly userService: RoleService) { }
 
     @Get('/')
     getAll() {
         return this.userService.findAll();
     }
 
-    @Get('/:username')
-    getOnly(@Param("username") username: string) {
-      return this.userService.findOne(username);
-    }
+    // @Get('/:username')
+    // getOnly(@Param("username") username: string) {
+    //   return this.userService.findOne(username);
+    // }
 
     @Post('/')
-    async createUsers(@Body() data: UserDto) {
+    async createRoles(@Body() data: RoleDto) {
       const user = await this.userService.create(data);
       return {
         statusCode: HttpStatus.OK,
@@ -32,7 +32,7 @@ export class UsersController {
     }
   
     @Patch(':id')
-    async updateUser(@Param('id') id: number, @Body() data: UserDto) {
+    async updateRole(@Param('id') id: number, @Body() data: RoleDto) {
       return await this.userService.update(id, data);
     }
   
