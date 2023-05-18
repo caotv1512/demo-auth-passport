@@ -1,6 +1,6 @@
-import { Role } from 'src/modules/roles/database/role.entity';
+// import { Role } from 'src/modules/roles/database/role.entity';
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-
+import { Role } from 'src/helper/config/enum';
 export const TableName = 'users';
 
 @Entity(TableName)
@@ -17,6 +17,11 @@ export class User {
   @Column('')
   password: string;
 
-  @Column()
-  roleId: number;
+  @Column({
+    type: 'enum',
+    enum: Role,
+    array: true,
+    default: [Role.USER]
+  })
+  public roleId: Role[]
 }

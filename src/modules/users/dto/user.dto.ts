@@ -16,7 +16,7 @@ export class UserDto {
 
   @IsNumber()
   @IsNotEmpty()
-  roleId: number;
+  roleId: number[];
 
 //   @IsNumber()
 //   @IsNotEmpty()
