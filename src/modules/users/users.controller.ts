@@ -1,12 +1,15 @@
-import { Body, Controller, Delete, Get, HttpStatus, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpStatus, Param, Patch, Post, SetMetadata } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { UserDto } from './dto/user.dto';
+import { Role } from 'src/helper/config/enum';
+import { Roles } from './roles.decorator';
 
 @Controller('users')
 export class UsersController {
     constructor(private readonly userService: UsersService) { }
 
     @Get('/')
+    @Roles(Role.USER)
     getAll() {
         return this.userService.findAll();
     }
@@ -17,6 +20,8 @@ export class UsersController {
     }
 
     @Post('/')
+    // @SetMetadata('roleId', [Role.ADMIN])
+    @Roles(Role.USER)
     async createUsers(@Body() data: UserDto) {
       const user = await this.userService.create(data);
       return {

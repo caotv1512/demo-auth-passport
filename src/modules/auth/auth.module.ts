@@ -17,7 +17,7 @@ import { JwtStrategy } from './jwt.strategy';
     // ============Auth by Session ===============
     // PassportModule.register({session: true})
     PassportModule,
-    JwtModule.register({ secret: 'SECRET', signOptions: { expiresIn: '60s' } }),
+    JwtModule.register({ secret: 'SECRET', signOptions: { expiresIn: '360s' } }),
   ],
   providers: [AuthService, LocalStrategy, JwtStrategy],
   controllers: [AuthController],

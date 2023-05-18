@@ -73,7 +73,7 @@ export class UsersService {
       user.username = data.username;
       user.email = data.email;
       user.password = data.password;
-      user.roleId = data.roleId;
+      // user.roleId = data.roleId;
       await this.userRepo.update({ id }, user);
       return {
         statusCode: HttpStatus.OK,
